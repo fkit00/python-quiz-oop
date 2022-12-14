@@ -1,4 +1,28 @@
-class User:
+from question_model import Question
+from data import question_data
+from quiz_brain import Quiz_Brain
+
+question_bank= []
+
+for n in question_data:
+   text=n['text']
+   ans=n['answer']
+   question_bank.append(Question(text, ans))
+
+
+
+
+quiz= Quiz_Brain(question_bank)
+
+
+
+ 
+while quiz.still_has_questions():
+    quiz.next_question()
+print(f"you've completed the quiz and your final score was {quiz.score}/{quiz.question_number}")
+
+
+""" class User:
     def __init__(self, user_id, username):
         ## this will be called everytime we create a new object
         ##params following self will be passed in every time so User(8) would set an attribute
@@ -21,3 +45,4 @@ user_2= User("002", "nancy")
 user_1.follow(user_2)
 print(user_1.followers)
 print(user_1.following)
+ """
